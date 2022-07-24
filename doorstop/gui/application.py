@@ -210,7 +210,10 @@ class Application(ttk.Frame):
             widget.Label(frame, text="Items:").grid(
                 row=0, column=4, columnspan=2, sticky=tk.W, **kw_gp
             )
-            c_columnId = ("Id","Header",)
+            c_columnId = (
+                "Id",
+                "Header",
+            )
             self.treeview_outline = widget.TreeView(frame, columns=c_columnId)
             for col in c_columnId:
                 self.treeview_outline.heading(col, text=col)
@@ -483,13 +486,16 @@ class Application(ttk.Frame):
             # Add the item to the document outline
             header_text = item.header
             if header_text == "":
-                header_text = item.text.split('\n')[0]
+                header_text = item.text.split("\n")[0]
             self.treeview_outline.insert(
                 theParent,
                 tk.END,
                 item.uid,
                 text=item.level,
-                values=(item.uid,header_text,),
+                values=(
+                    item.uid,
+                    header_text,
+                ),
                 open=item.uid in c_openItem,
             )
 
